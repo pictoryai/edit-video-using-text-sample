@@ -1,3 +1,13 @@
+# dependencies
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+
 # Logs
 logs
 *.log
