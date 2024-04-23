@@ -48,8 +48,8 @@ const Video = ({ onEdit, iframeUrl }) => {
                   border: 0,
                 }}
                 src={MAIN_VIDEO}
-                width="560px"
-                height="315px"
+                width="800px"
+                height="450px"
                 title="Justin Trudeau & Barack Obama White House Rose Garden media conference, March 10, 2016"
               ></Box>
             </Box>
