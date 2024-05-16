@@ -1,21 +1,26 @@
 import React, { Fragment, useEffect, useState } from "react";
-import ApiService from "../../Services/apiService";
-import useErrorHandler from "../../Utils/errorHandler";
+import useErrorHandler from "../../utils/errorHandler";
 import Video from "../Video";
 import Editor from "../Editor";
 import Error from "../Error";
-import { API } from "../../Constants";
+import Loader from "../Loader";
+import API from '../../services/API'
 
 const EditorContainer = () => {
   const [showEditor, setShowEditor] = useState(false);
   const { error, showError, handleClose } = useErrorHandler();
+  const [showLoader, setShowLoader] = useState(false);
 
-  onEditClicked = () => {
-    setShowEditor(true);
+  const onEditClicked = async (videoUrl) => {
+    const { jobId } = await API.transcribeVideo(videoUrl);
+    setShowLoader(true);
+    const editVideoUrl = await API.getTranscriptionResponse(jobId);
+    setShowLoader(false);
   }
 
   return (
     <Fragment>
+      <Loader show={showLoader}></Loader>
       {
         showEditor
           ?

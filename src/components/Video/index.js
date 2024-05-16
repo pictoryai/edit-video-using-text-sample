@@ -1,7 +1,7 @@
 // Video.js
 import React, { Fragment } from "react";
 import { Box, Button, Grid } from "@mui/material";
-import { MAIN_VIDEO } from "../../Constants";
+import { EDIT_VIDEO } from "../../common/constants";
 
 const Video = ({ onEdit }) => {
     return (
@@ -22,18 +22,18 @@ const Video = ({ onEdit }) => {
                         boxShadow={1}
                     >
                         <Box
-                            component={"iframe"}
                             sx={{
                                 maxWidth: 1,
                                 border: 0,
                             }}
-                            src={MAIN_VIDEO}
+                            display="flex"
                             width="800px"
                             height="450px"
-                            title="Justin Trudeau & Barack Obama White House Rose Garden media conference, March 10, 2016"
-                        ></Box>
+                            title="Justin Trudeau & Barack Obama White House Rose Garden media conference, March 10, 2016">
+                            <video controls src={EDIT_VIDEO}></video>
+                        </Box>
                     </Box>
-                    <Button onClick={onEdit} variant="contained" color="primary">
+                    <Button onClick={() => onEdit(EDIT_VIDEO)} variant="contained" color="primary">
                         Edit Video
                     </Button>
                 </Grid>

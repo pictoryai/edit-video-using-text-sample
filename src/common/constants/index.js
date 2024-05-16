@@ -1,0 +1,1 @@
+export const EDIT_VIDEO = "https://pictory-static.pictorycontent.com/samples/videos/video-editing/VideoEditDemoInput.mp4";

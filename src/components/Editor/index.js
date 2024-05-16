@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState, useLayoutEffect } from "react";
 import { Box, Button, Grid } from "@mui/material";
-import { VideoEditor } from "../../VideoEditor";
+import { VideoEditor } from "../../videoEditor";
 
 const Editor = ({ editorUrl, onError }) => {
   const editorContainerRef = useRef(null);
@@ -23,13 +23,13 @@ const Editor = ({ editorUrl, onError }) => {
 
   }, []);
 
-  onVideoEditorReady = () => {
+  const onVideoEditorReady = () => {
     let intervalId = setInterval(updateAccessToken, 180000);
     setAccessTokenIntervalId(intervalId);
     console.log("Video Editor is Ready");
   }
 
-  updateAccessToken = async () => {
+  const updateAccessToken = async () => {
     let accessToken = null;
     //Get access token
     await videoEditor.setAccessToken(accessToken);
