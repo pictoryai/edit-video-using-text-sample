@@ -44,7 +44,7 @@ const getTranscriptionResponse = async (jobId) => {
           }
         );
         if (response.data.data.editVideoUrl) {
-          resolve(response.data.data.editVideoUrl.replace("https://development-v1-editvideo.d2lsmoql7f3ogc.amplifyapp.com", "http://localhost:3000"));
+          resolve(response.data.data.editVideoUrl);
           clearInterval(intervalId);
         }
         else {
