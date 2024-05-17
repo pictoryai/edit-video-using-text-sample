@@ -4,11 +4,10 @@ export class VideoEditor {
 
     constructor(containerElement, editUrl) {
         const iframe = document.createElement('iframe');
-        iframe.setAttribute('width', '100%');
-        iframe.setAttribute('height', '100%');
         iframe.setAttribute('src', editUrl);
         iframe.style.border = 'none';
-        iframe.style.display = 'none';
+        iframe.style.height = "100vh";
+        iframe.style.width = "100%"
         this.inProgressTasks = {};
 
         containerElement.innerHTML = '';
@@ -18,9 +17,8 @@ export class VideoEditor {
 
         this.iframe = iframe;
 
-        this.onReady = null;
-        this.onLoad = null;
-        this.onLoadComplete = null;
+        this.onLoaded = null;
+        this.onError = null;
     }
 
     close() {
@@ -39,14 +37,16 @@ export class VideoEditor {
         });
     }
 
-    setVideoRenderCallbackHook = async (webhook) => {
-        await this.executeEditorAction({ message: 'SET_VIDEO_RENDER_WEB_HOOK', webhook }).catch((error) => {
-            throw new Error(`Failed to set video render webhook: ${error.message}`);
-        });
+    setWebhooks = async ({ renderWebhook }) => {
+        if (renderWebhook) {
+            await this.executeEditorAction({ message: 'SET_WEBHOOK', renderWebhook }).catch((error) => {
+                throw new Error(`Failed to set webhook: ${error.message}`);
+            });
+        }
     }
 
     executeEditorAction = async (message, payload) => {
-        if (!this.ready) {
+        if (!this.loaded) {
             throw new Error('The Editor is not loaded.');
         }
 
@@ -85,22 +85,16 @@ export class VideoEditor {
             }
         } else {
             switch (message) {
-                case 'onReady':
-                    this.ready = true;
-                    if (this.onReady) {
-                        this.onReady();
+                case 'ON_LOADED':
+                    this.loaded = true;
+                    if (this.onLoaded) {
+                        this.onLoaded(this);
                     }
                     break;
-
-                case 'onLoad':
-                    if (this.onLoad) {
-                        this.onLoad();
-                    }
-                    break;
-
-                case 'onLoadComplete':
-                    if (this.onLoadComplete) {
-                        this.onLoadComplete();
+                case 'ON_ERROR':
+                    this.errored = true;
+                    if (this.onError) {
+                        this.onError(this, error);
                     }
                     break;
             }

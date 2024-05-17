@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect, useRef, useState, useLayoutEffect } from "react";
 import { Box, Button, Grid } from "@mui/material";
 import { VideoEditor } from "../../videoEditor";
+import API from '../../services/API';
+
+const RENDER_WEBHOOK = "https://webhook.site/4f88f3a7-a10c-4bb3-a2d8-00efd6d76754";
 
 const Editor = ({ editorUrl, onError }) => {
   const editorContainerRef = useRef(null);
@@ -12,28 +15,32 @@ const Editor = ({ editorUrl, onError }) => {
       if (accessTokenIntervalId) {
         clearInterval(accessTokenIntervalId);
       }
-      videoEditor.close();
+      if (videoEditor) {
+        videoEditor.close();
+      }
     }
   }, []);
 
   useLayoutEffect(() => {
-    let videoEditor = new VideoEditor(editorContainerRef.current, editorUrl);
-    videoEditor.onReady = onVideoEditorReady;
-    setVideoEditor(videoEditor);
-
+    let editor = new VideoEditor(editorContainerRef.current, editorUrl);
+    editor.onLoaded = onVideoEditorLoaded;
+    editor.onError = onVideoEditorErrored;
+    setVideoEditor(editor);
   }, []);
 
-  const onVideoEditorReady = () => {
-    let intervalId = setInterval(updateAccessToken, 180000);
+  const onVideoEditorLoaded = async (editor) => {
+    let intervalId = setInterval(updateAccessToken, 900000, editor); //15mins
     setAccessTokenIntervalId(intervalId);
-    console.log("Video Editor is Ready");
+    await editor.setWebhooks({ renderWebhook: RENDER_WEBHOOK });
   }
 
-  const updateAccessToken = async () => {
-    let accessToken = null;
-    //Get access token
-    await videoEditor.setAccessToken(accessToken);
+  const onVideoEditorErrored = (editor, error) => {
+    onError && onError(error);
+  }
 
+  const updateAccessToken = async (editor) => {
+    const { access_token } = await API.getToken();
+    await editor.setAccessToken(access_token);
   }
 
   return <Box sx={{ display: "flex", height: "100%", width: "100%", flexDirection: "column", boxSizing: "border-box" }} ref={editorContainerRef}>

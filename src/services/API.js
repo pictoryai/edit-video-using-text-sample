@@ -11,7 +11,7 @@ const getToken = async () => {
 
 const transcribeVideo = async (videoUrl,) => {
   let { access_token } = await getToken();
-  let response = await axios.post(`${process.env.REACT_APP_API_URL}/pictoryapis/v2/transcription`, {
+  let response = await axios.post(`${process.env.REACT_APP_API_URL}/v2/transcription`, {
     "fileUrl": videoUrl,
     "mediaType": "video",
     "language": "en-US"
@@ -19,7 +19,7 @@ const transcribeVideo = async (videoUrl,) => {
     {
       headers: {
         "Authorization": access_token,
-        "X-Pictory-User-Id": "EDTECH_USER"
+        "X-Pictory-User-Id": "edtechuser"
       }
     }
   );
@@ -35,16 +35,16 @@ const getTranscriptionResponse = async (jobId) => {
     let intervalId = setInterval(async () => {
       try {
         let { access_token } = await getToken();
-        let response = await axios.get(`${process.env.REACT_APP_API_URL}/pictoryapis/v1/jobs/${jobId}`,
+        let response = await axios.get(`${process.env.REACT_APP_API_URL}/v1/jobs/${jobId}`,
           {
             headers: {
               "Authorization": access_token,
-              "X-Pictory-User-Id": "EDTECH_USER"
+              "X-Pictory-User-Id": "edtechuser"
             }
           }
         );
         if (response.data.data.editVideoUrl) {
-          resolve(response.data.data.editVideoUrl);
+          resolve(response.data.data.editVideoUrl.replace("https://development-v1-editvideo.d2lsmoql7f3ogc.amplifyapp.com", "http://localhost:3000"));
           clearInterval(intervalId);
         }
         else {
