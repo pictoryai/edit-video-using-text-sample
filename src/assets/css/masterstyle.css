@@ -1,0 +1,52 @@
+.otp-sms input::-webkit-outer-spin-button,
+.otp-sms input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.otp-sms .MuiTextField-root .MuiInputBase-input {
+    -moz-appearance: textfield;
+    width: 72px;
+    height: 72px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #16171d;
+}
+
+.otp-sms .MuiTextField-root:focus {
+    border: 2px solid #1976d2;
+    box-shadow: 0px 0px 5px 2px #1976d2;
+    height: 72px;
+}
+
+.error-otp-sms .MuiTextField-root {
+    border: 2px solid #ff5252;
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+.email-verified-success .MuiTextField-root {
+    border: 2px solid #4caf50;
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+.otp-sms .MuiFormControl-root.MuiTextField-root .MuiInputBase-root.MuiOutlinedInput-root {
+    -moz-appearance: textfield;
+    width: 72px;
+    height: 72px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #16171d;
+    padding: 0;
+    margin: -2px -2px 0 -2px;
+}
+
+.otp-sms .Mui-focused {
+    box-shadow: 0px 0px 0px 3px #1976d2;
+}
