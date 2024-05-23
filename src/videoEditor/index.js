@@ -19,6 +19,7 @@ export class VideoEditor {
 
         this.onLoaded = null;
         this.onError = null;
+        this.onVideoRenderJobSchedule = null;
     }
 
     close() {
@@ -89,6 +90,12 @@ export class VideoEditor {
                     this.loaded = true;
                     if (this.onLoaded) {
                         this.onLoaded(this);
+                    }
+                    break;
+                case 'ON_VIDEO_RENDER_JOB_SCHEDULE':
+                    this.loaded = true;
+                    if (this.onVideoRenderJobSchedule) {
+                        this.onVideoRenderJobSchedule(this, args.jobId);
                     }
                     break;
                 case 'ON_ERROR':

@@ -25,6 +25,7 @@ const Editor = ({ editorUrl, onError }) => {
     let editor = new VideoEditor(editorContainerRef.current, editorUrl);
     editor.onLoaded = onVideoEditorLoaded;
     editor.onError = onVideoEditorErrored;
+    editor.onVideoRenderJobSchedule = onVideoRenderJobSchedule;
     setVideoEditor(editor);
   }, []);
 
@@ -41,6 +42,10 @@ const Editor = ({ editorUrl, onError }) => {
   const updateAccessToken = async (editor) => {
     const { access_token } = await API.getToken();
     await editor.setAccessToken(access_token);
+  }
+
+  const onVideoRenderJobSchedule = async (editor, jobId) => {
+    console.log(jobId);
   }
 
   return <Box sx={{ display: "flex", height: "100%", width: "100%", flexDirection: "column", boxSizing: "border-box" }} ref={editorContainerRef}>
