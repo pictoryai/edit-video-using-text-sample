@@ -16,7 +16,9 @@ export class VideoEditor {
         window.addEventListener('message', this.receiveEditorMessages);
 
         this.iframe = iframe;
-
+        this.loaded = false;
+        this.ready = false;
+        this.onReady = null;
         this.onLoaded = null;
         this.onError = null;
         this.onVideoRenderJobSchedule = null;
@@ -86,6 +88,12 @@ export class VideoEditor {
             }
         } else {
             switch (message) {
+                case 'ON_READY':
+                    this.ready = true;
+                    if (this.onReady) {
+                        this.onReady(this);
+                    }
+                    break;
                 case 'ON_LOADED':
                     this.loaded = true;
                     if (this.onLoaded) {
@@ -93,7 +101,6 @@ export class VideoEditor {
                     }
                     break;
                 case 'ON_VIDEO_RENDER_JOB_SCHEDULE':
-                    this.loaded = true;
                     if (this.onVideoRenderJobSchedule) {
                         this.onVideoRenderJobSchedule(this, args.jobId);
                     }

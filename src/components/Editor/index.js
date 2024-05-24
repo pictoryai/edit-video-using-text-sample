@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useRef, useState, useLayoutEffect } from "r
 import { Box, Button, Grid } from "@mui/material";
 import { VideoEditor } from "../../videoEditor";
 import API from '../../services/API';
+import Loader from "../Loader";
 
 const RENDER_WEBHOOK = "https://webhook.site/4f88f3a7-a10c-4bb3-a2d8-00efd6d76754";
 
@@ -9,6 +10,7 @@ const Editor = ({ editorUrl, onError }) => {
   const editorContainerRef = useRef(null);
   const [videoEditor, setVideoEditor] = useState(null);
   const [accessTokenIntervalId, setAccessTokenIntervalId] = useState(null);
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
     return () => {
@@ -23,11 +25,16 @@ const Editor = ({ editorUrl, onError }) => {
 
   useLayoutEffect(() => {
     let editor = new VideoEditor(editorContainerRef.current, editorUrl);
+    editor.onReady = onVideoEditorReady;
     editor.onLoaded = onVideoEditorLoaded;
     editor.onError = onVideoEditorErrored;
     editor.onVideoRenderJobSchedule = onVideoRenderJobSchedule;
     setVideoEditor(editor);
   }, []);
+
+  const onVideoEditorReady = async (editor) => {
+    setShowLoader(false);
+  }
 
   const onVideoEditorLoaded = async (editor) => {
     let intervalId = setInterval(updateAccessToken, 900000, editor); //15mins
@@ -48,8 +55,11 @@ const Editor = ({ editorUrl, onError }) => {
     console.log(jobId);
   }
 
-  return <Box sx={{ display: "flex", height: "100%", width: "100%", flexDirection: "column", boxSizing: "border-box" }} ref={editorContainerRef}>
-  </Box>
+  return <>
+    <Loader show={showLoader}></Loader>
+    <Box sx={{ display: "flex", height: "100%", width: "100%", flexDirection: "column", boxSizing: "border-box" }} ref={editorContainerRef}>
+    </Box>
+  </>
 };
 
 export default Editor;
