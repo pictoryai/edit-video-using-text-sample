@@ -100,9 +100,14 @@ export class VideoEditor {
                         this.onLoaded(this);
                     }
                     break;
-                case 'ON_VIDEO_RENDER_JOB_SCHEDULE':
+                case 'ON_RENDER_JOB_SCHEDULE':
                     if (this.onVideoRenderJobSchedule) {
                         this.onVideoRenderJobSchedule(this, args.jobId);
+                    }
+                    break;
+                case 'ON_RENDER_JOB_SCHEDULE_FAILED':
+                    if (this.onVideoRenderJobSchedule) {
+                        this.onVideoRenderJobSchedule(this, error);
                     }
                     break;
                 case 'ON_ERROR':
