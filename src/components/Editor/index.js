@@ -6,7 +6,7 @@ import Loader from "../Loader";
 
 const RENDER_WEBHOOK = "https://webhook.site/4f88f3a7-a10c-4bb3-a2d8-00efd6d76754";
 
-const brands = [
+const themes = [
   {
     "button": {
       "downloadVideo": {
@@ -166,7 +166,7 @@ const Editor = ({ editorUrl, onError }) => {
 
   useLayoutEffect(() => {
     let editor = new VideoEditor(editorContainerRef.current, editorUrl, {
-      branding: brands[Math.floor(Math.random() * brands.length)]
+      theme: themes[Math.floor(Math.random() * themes.length)]
     });
     editor.onReady = onVideoEditorReady;
     editor.onLoaded = onVideoEditorLoaded;

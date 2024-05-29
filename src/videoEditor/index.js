@@ -91,7 +91,7 @@ export class VideoEditor {
             switch (message) {
                 case 'ON_READY':
                     this.ready = true;
-                    this.iframe.contentWindow.postMessage({ ...JSON.parse(JSON.stringify({ message: "SET_BRANDING", branding: this.options.branding })) }, '*');
+                    this.iframe.contentWindow.postMessage({ ...JSON.parse(JSON.stringify({ message: "SET_THEME", theme: this.options.theme })) }, '*');
                     if (this.onReady) {
                         await this.onReady(this);
                     }
