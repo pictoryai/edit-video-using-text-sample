@@ -29,6 +29,121 @@ const brands = [
       "format": "truetype",
       "url": "https://pictory-static.pictorycontent.com/static/fonts/Party_Confetti/Party_Confetti.ttf"
     }
+  },
+  {
+    "button": {
+      "downloadVideo": {
+        "visible": true
+      },
+      "notificationBell": {
+        "visible": true
+      }
+    },
+    "color": {
+      "primary": {
+        "contrastText": "#dbff26",
+        "dark": "#022a66",
+        "light": "#b3d1fc",
+        "main": "#4f95ff"
+      }
+    },
+    "font": {
+      "family": "Party Confetti",
+      "format": "truetype",
+      "url": "https://pictory-static.pictorycontent.com/static/fonts/Party_Confetti/Party_Confetti.ttf"
+    }
+  },
+  {
+    "button": {
+      "downloadVideo": {
+        "visible": true
+      },
+      "notificationBell": {
+        "visible": false
+      }
+    },
+    "color": {
+      "primary": {
+        "contrastText": "#dbff26",
+        "dark": "#0b7801",
+        "light": "#a4ff9c",
+        "main": "#2cbf1f"
+      }
+    },
+    "font": {
+      "family": "Party Confetti",
+      "format": "truetype",
+      "url": "https://pictory-static.pictorycontent.com/static/fonts/Party_Confetti/Party_Confetti.ttf"
+    }
+  },
+  {
+    "button": {
+      "downloadVideo": {
+        "visible": false
+      },
+      "notificationBell": {
+        "visible": true
+      }
+    },
+    "color": {
+      "primary": {
+        "contrastText": "#dbff26",
+        "dark": "#9c9402",
+        "light": "#fff98c",
+        "main": "#a8a11b"
+      }
+    },
+    "font": {
+      "family": "Party Confetti",
+      "format": "truetype",
+      "url": "https://pictory-static.pictorycontent.com/static/fonts/Party_Confetti/Party_Confetti.ttf"
+    }
+  },
+  {
+    "button": {
+      "downloadVideo": {
+        "visible": false
+      },
+      "notificationBell": {
+        "visible": false
+      }
+    },
+    "color": {
+      "primary": {
+        "contrastText": "#dbff26",
+        "dark": "#6f0180",
+        "light": "#ef95fc",
+        "main": "#ab15c2"
+      }
+    },
+    "font": {
+      "family": "Party Confetti",
+      "format": "truetype",
+      "url": "https://pictory-static.pictorycontent.com/static/fonts/Party_Confetti/Party_Confetti.ttf"
+    }
+  },
+  {
+    "button": {
+      "downloadVideo": {
+        "visible": true
+      },
+      "notificationBell": {
+        "visible": true
+      }
+    },
+    "color": {
+      "primary": {
+        "contrastText": "#dbff26",
+        "dark": "#04787a",
+        "light": "#95eef0",
+        "main": "#1ec4c7"
+      }
+    },
+    "font": {
+      "family": "Party Confetti",
+      "format": "truetype",
+      "url": "https://pictory-static.pictorycontent.com/static/fonts/Party_Confetti/Party_Confetti.ttf"
+    }
   }
 ]
 
@@ -51,7 +166,7 @@ const Editor = ({ editorUrl, onError }) => {
 
   useLayoutEffect(() => {
     let editor = new VideoEditor(editorContainerRef.current, editorUrl, {
-      branding: brands[0]
+      branding: brands[Math.floor(Math.random() * brands.length)]
     });
     editor.onReady = onVideoEditorReady;
     editor.onLoaded = onVideoEditorLoaded;
