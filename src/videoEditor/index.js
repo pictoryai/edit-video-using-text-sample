@@ -2,7 +2,8 @@ import { v4 as uuid } from 'uuid';
 
 export class VideoEditor {
 
-    constructor(containerElement, editUrl) {
+    constructor(containerElement, editUrl, options) {
+        this.options = options || {};
         const iframe = document.createElement('iframe');
         iframe.setAttribute('src', editUrl);
         iframe.style.border = 'none';
@@ -62,7 +63,7 @@ export class VideoEditor {
         return new Promise((resolve, reject) => (this.inProgressTasks[id] = { resolve, reject }));
     }
 
-    receiveEditorMessages = (event) => {
+    receiveEditorMessages = async (event) => {
         if (!event.data || typeof event.data !== 'object') {
             return;
         }
@@ -90,30 +91,31 @@ export class VideoEditor {
             switch (message) {
                 case 'ON_READY':
                     this.ready = true;
+                    this.iframe.contentWindow.postMessage({ ...JSON.parse(JSON.stringify({ message: "SET_BRANDING", branding: this.options.branding })) }, '*');
                     if (this.onReady) {
-                        this.onReady(this);
+                        await this.onReady(this);
                     }
                     break;
                 case 'ON_LOADED':
                     this.loaded = true;
                     if (this.onLoaded) {
-                        this.onLoaded(this);
+                        await this.onLoaded(this);
                     }
                     break;
                 case 'ON_RENDER_JOB_SCHEDULE':
                     if (this.onVideoRenderJobSchedule) {
-                        this.onVideoRenderJobSchedule(this, args.jobId);
+                        await this.onVideoRenderJobSchedule(this, args.jobId);
                     }
                     break;
                 case 'ON_RENDER_JOB_SCHEDULE_FAILED':
                     if (this.onVideoRenderJobSchedule) {
-                        this.onVideoRenderJobSchedule(this, error);
+                        await this.onVideoRenderJobSchedule(this, error);
                     }
                     break;
                 case 'ON_ERROR':
                     this.errored = true;
                     if (this.onError) {
-                        this.onError(this, error);
+                        await this.onError(this, error);
                     }
                     break;
             }

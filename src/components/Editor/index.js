@@ -6,6 +6,32 @@ import Loader from "../Loader";
 
 const RENDER_WEBHOOK = "https://webhook.site/4f88f3a7-a10c-4bb3-a2d8-00efd6d76754";
 
+const brands = [
+  {
+    "button": {
+      "downloadVideo": {
+        "visible": false
+      },
+      "notificationBell": {
+        "visible": false
+      }
+    },
+    "color": {
+      "primary": {
+        "contrastText": "#dbff26",
+        "dark": "#940b01",
+        "light": "#f59089",
+        "main": "#f02011"
+      }
+    },
+    "font": {
+      "family": "Party Confetti",
+      "format": "truetype",
+      "url": "https://pictory-static.pictorycontent.com/static/fonts/Party_Confetti/Party_Confetti.ttf"
+    }
+  }
+]
+
 const Editor = ({ editorUrl, onError }) => {
   const editorContainerRef = useRef(null);
   const [videoEditor, setVideoEditor] = useState(null);
@@ -24,7 +50,9 @@ const Editor = ({ editorUrl, onError }) => {
   }, []);
 
   useLayoutEffect(() => {
-    let editor = new VideoEditor(editorContainerRef.current, editorUrl);
+    let editor = new VideoEditor(editorContainerRef.current, editorUrl, {
+      branding: brands[0]
+    });
     editor.onReady = onVideoEditorReady;
     editor.onLoaded = onVideoEditorLoaded;
     editor.onError = onVideoEditorErrored;
