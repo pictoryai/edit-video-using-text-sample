@@ -14,6 +14,19 @@ const themes = [
       },
       "notificationBell": {
         "visible": false
+      },
+      "autoHighlight": {
+        "visible": true
+      }
+    },
+    "contextMenu": {
+      "downloadVideo": {
+        "visible": false,
+      },
+    },
+    "tab": {
+      "highlight": {
+        "label": "My Highlights"
       }
     },
     "color": {
@@ -37,6 +50,19 @@ const themes = [
       },
       "notificationBell": {
         "visible": true
+      },
+      "autoHighlight": {
+        "visible": false
+      }
+    },
+    "contextMenu": {
+      "downloadVideo": {
+        "visible": true,
+      },
+    },
+    "tab": {
+      "highlight": {
+        "label": "My Clips"
       }
     },
     "color": {
@@ -60,6 +86,19 @@ const themes = [
       },
       "notificationBell": {
         "visible": false
+      },
+      "autoHighlight": {
+        "visible": true
+      }
+    },
+    "contextMenu": {
+      "downloadVideo": {
+        "visible": false,
+      },
+    },
+    "tab": {
+      "highlight": {
+        "label": "My Selected Clips"
       }
     },
     "color": {
@@ -83,6 +122,19 @@ const themes = [
       },
       "notificationBell": {
         "visible": true
+      },
+      "autoHighlight": {
+        "visible": false
+      }
+    },
+    "contextMenu": {
+      "downloadVideo": {
+        "visible": true,
+      },
+    },
+    "tab": {
+      "highlight": {
+        "label": "My HSelected ighlights"
       }
     },
     "color": {
@@ -108,6 +160,16 @@ const themes = [
         "visible": false
       }
     },
+    "contextMenu": {
+      "downloadVideo": {
+        "visible": true,
+      },
+    },
+    "tab": {
+      "highlight": {
+        "label": "Highlights"
+      }
+    },
     "color": {
       "primary": {
         "contrastText": "#dbff26",
@@ -129,6 +191,16 @@ const themes = [
       },
       "notificationBell": {
         "visible": true
+      }
+    },
+    "contextMenu": {
+      "downloadVideo": {
+        "visible": false,
+      },
+    },
+    "tab": {
+      "highlight": {
+        "label": "Clips"
       }
     },
     "color": {
