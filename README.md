@@ -35,7 +35,8 @@ Brand-Option Format is mentioned at <>.
 ### Important `postMessage` from your webapp to our iframe page
 
 1. Pictory `access_token`
-``` { message: 'SET_ACCESS_TOKEN', <YOUR_ACCESS_TOKEN> }
+```
+{ message: 'SET_ACCESS_TOKEN', <YOUR_ACCESS_TOKEN> }
 ```
 You can obtain an access_token by calling our authentication API https://docs.pictory.ai/reference/authentication. Please see access_token expires in 1 hour, so please regenerate  `access_token` before its expiry and pass it to the iFrame.
 
