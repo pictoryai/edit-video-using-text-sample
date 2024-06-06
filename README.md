@@ -10,8 +10,8 @@ Ensure you have the following prerequisites installed:
 Steps to run the sample app are mentioned below:
 ```
 Download the repo code and run following commands in your terminal
-npm install --legacy-peer-deps
-npm start
+$npm install --legacy-peer-deps
+$npm start
 ```
 
 ## Prerequisite to integrate our Video Summarizer page in your webapp
