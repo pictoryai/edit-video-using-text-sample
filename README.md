@@ -32,15 +32,15 @@ You can obtain `editorUrl` by calling our transcription API mentioned at https:/
 
 Brand-Option Format is mentioned at bottom of this page.
 
-#### Important `postMessage` from your webapp to our iframe page
+#### Important `postMessage` from your webpage container to our iframe page
 
-1. Pictory `access_token`
+1. Pictory `access_token`: You can obtain an access_token by calling our authentication API https://docs.pictory.ai/reference/authentication. Please see access_token expires in 1 hour, so please regenerate  `access_token` before its expiry and pass it to the iFrame.
+
 ```
 { message: 'SET_ACCESS_TOKEN', <YOUR_ACCESS_TOKEN> }
 ```
-You can obtain an access_token by calling our authentication API https://docs.pictory.ai/reference/authentication. Please see access_token expires in 1 hour, so please regenerate  `access_token` before its expiry and pass it to the iFrame.
 
-2. Render Webhook: You can set your own Video Download URL by providing render webhook. You should do this whenever the iFrame is loaded inside your page
+2. Render Webhook: You can set your Video Download URL by providing render webhook from your web page container to our iFrame by passing following message:
    ```
     { message: 'SET_WEBHOOK', renderWebhook}    
    ```
