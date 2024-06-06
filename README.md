@@ -32,7 +32,7 @@ You can obtain `editorUrl` by calling our transcription API mentioned at https:/
 
 Brand-Option Format is mentioned at <>.
 
-### Important `postMessage` from your webapp to our iframe page
+#### Important `postMessage` from your webapp to our iframe page
 
 1. Pictory `access_token`
 ```
