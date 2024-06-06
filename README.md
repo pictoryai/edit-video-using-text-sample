@@ -20,11 +20,13 @@ You need Pictory API KEYS, including CLIENT_ID, CLIENT_SECRET and X-Pictory-User
 
 Note: If you don't have your Pictory API KEYs, please get in touch with us at support@pictory.ai.
 
-##### Initializing VideoEditor from your web page
+##### Initializing `VideoEditor` from your web page
 
-``
+https://github.com/pictoryai/edtech-video-editor-front-end/blob/main/src/videoEditor/index.js
+
+```
 new VideoEditor( reference_to_your_Container, editorUrl, brandOptions);
-``
+```
 
 You can obtain `editorUrl` by calling our transcription API mentioned at https://docs.pictory.ai/reference/post_pictoryapis-v2-transcription
 
@@ -33,16 +35,11 @@ Brand-Option Format is mentioned at <>.
 ### Important `postMessage` from your webapp to our iframe page
 
 1. Pictory `access_token`
-`` { message: 'SET_ACCESS_TOKEN', <YOUR_ACCESS_TOKEN> }
-``
+``` { message: 'SET_ACCESS_TOKEN', <YOUR_ACCESS_TOKEN> }
+```
 You can obtain an access_token by calling our authentication API https://docs.pictory.ai/reference/authentication. Please see access_token expires in 1 hour, so please regenerate  `access_token` before its expiry and pass it to the iFrame.
 
 2. Render Webhook: You can set your own Video Download URL by providing render webhook. You should do this whenever the iFrame is loaded inside your page
-   ``
+   ```
     { message: 'SET_WEBHOOK', renderWebhook}    
-   ``
-
-
-
-  
-  
+   ```
