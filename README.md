@@ -30,7 +30,7 @@ new VideoEditor( reference_to_your_Container, editorUrl, brandOptions);
 
 You can obtain `editorUrl` by calling our transcription API mentioned at https://docs.pictory.ai/reference/post_pictoryapis-v2-transcription
 
-Brand-Option Format is mentioned at <>.
+Brand-Option Format is mentioned at bottom of this page.
 
 #### Important `postMessage` from your webapp to our iframe page
 
@@ -44,3 +44,43 @@ You can obtain an access_token by calling our authentication API https://docs.pi
    ```
     { message: 'SET_WEBHOOK', renderWebhook}    
    ```
+#### Brand Options parameters 
+
+```
+{
+    "button": {
+      "downloadVideo": {
+        "visible": false
+      },
+      "notificationBell": {
+        "visible": false
+      },
+      "autoHighlight": {
+        "visible": true
+      }
+    },
+    "contextMenu": {
+      "downloadVideo": {
+        "visible": false,
+      },
+    },
+    "tab": {
+      "highlight": {
+        "label": "My Highlights"
+      }
+    },
+    "color": {
+      "primary": {
+        "contrastText": "#dbff26",
+        "dark": "#940b01",
+        "light": "#f59089",
+        "main": "#f02011"
+      }
+    },
+    "font": {
+      "family": "Party Confetti",
+      "format": "truetype",
+      "url": "https://pictory-static.pictorycontent.com/static/fonts/Party_Confetti/Party_Confetti.ttf"
+    }
+  }
+```
