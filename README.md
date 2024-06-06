@@ -8,11 +8,11 @@ Ensure you have the following prerequisites installed:
 1. NODE VERSION 18 AND ABOVE
 
 Steps to run the sample app are mentioned below:
-``
+```
 Download the repo code and run following commands in your terminal
 npm install --legacy-peer-deps
 npm start
-``
+```
 
 ## Prerequisite to integrate our Video Summarizer page in your webapp
 
