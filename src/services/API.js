@@ -1,7 +1,10 @@
 import axios from "axios";
 
 const getToken = async () => {
-  let response = await axios.get(`${process.env.REACT_APP_TOKEN_URL}/token`);
+  let response = await axios.post(`${process.env.REACT_APP_API_URL}/v1/oauth2/token`, {
+    "client_id": process.env.REACT_APP_CLIENT_ID,
+    "client_secret": process.env.REACT_APP_CLIENT_SECRET
+  });
   return {
     "access_token": response.data.access_token,
     "expires_in": response.data.expires_in,
