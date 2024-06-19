@@ -11,7 +11,7 @@ Steps to run the sample app are mentioned below:
 ```
 Download the repo code and run following commands in your terminal
 $npm install
-$npm start
+$VITE_API_URL=<PICTORY-API-BASE-URL> VITE_CLIENT_ID=<YOUR-CILENT-ID> VITE_CLIENT_SECRET=<YOUR-CLIENT-SECRET> npm start
 ```
 
 ## Prerequisite to integrate our Video Summarizer page in your webapp
