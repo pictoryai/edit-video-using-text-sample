@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import './assets/css/masterstyle.css';
 
-import { Amplify, Auth } from 'aws-amplify'
+import { Amplify} from 'aws-amplify'
 
 Amplify.configure({
   Auth: {
-    region: process.env.REACT_APP_AWS_REGION,
-    userPoolId: process.env.REACT_APP_USER_POOL_ID,
-    userPoolWebClientId: process.env.REACT_APP_WEB_CLIENT_ID,
+    region: import.meta.env.AWS_REGION,
+    userPoolId: import.meta.env.AWS_USER_POOL_ID,
+    userPoolWebClientId: import.meta.env.AWS_WEB_CLIENT_ID,
     mandatorySignIn: true
   }
 })

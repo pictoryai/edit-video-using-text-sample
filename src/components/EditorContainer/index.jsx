@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
+import API from '../../services/API';
 import useErrorHandler from "../../utils/errorHandler";
-import Video from "../Video";
 import Editor from "../Editor";
 import Error from "../Error";
 import Loader from "../Loader";
-import API from '../../services/API'
+import Video from "../Video";
 
 const EditorContainer = () => {
   const [showEditor, setShowEditor] = useState(false);
