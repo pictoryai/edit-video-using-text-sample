@@ -11,12 +11,16 @@ Steps to run the sample app are mentioned below:
 ```
 Download the repo code and run following commands in your terminal
 $npm install
-$VITE_API_URL=<PICTORY-API-BASE-URL> VITE_CLIENT_ID=<YOUR-CILENT-ID> VITE_CLIENT_SECRET=<YOUR-CLIENT-SECRET> npm start
+$ VITE_API_URL=<PICTORY_API_URL> \
+VITE_CLIENT_ID=<UNIQUE-CLIENT-ID> \
+VITE_CLIENT_SECRET=<UNIQUE_CLIENT-SECRET> \
+VITE_X_PICTORY_USER_ID=<YOUR_USER_ID> \
+npm start
 ```
 
 ## Prerequisite to integrate our Video Summarizer page in your webapp
 
-You need Pictory API KEYS, including CLIENT_ID, CLIENT_SECRET and X-Pictory-User-Id to include our video summarizer app inside your web app.
+You need Pictory API KEYS, including VITE_CLIENT_ID, VITE_CLIENT_SECRET and VITE_X_PICTORY_USER_ID to include our video summarizer app inside your web app.
 
 Note: If you don't have your Pictory API KEYs, please get in touch with us at support@pictory.ai.
 
