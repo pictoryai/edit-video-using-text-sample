@@ -10,7 +10,7 @@ Ensure you have the following prerequisites installed:
 Steps to run the sample app are mentioned below:
 ```
 Download the repo code and run following commands in your terminal
-$npm install --legacy-peer-deps
+$npm install
 $npm start
 ```
 
