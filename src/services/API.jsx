@@ -1,7 +1,13 @@
 import axios from "axios";
 
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 const getToken = async () => {
-  let response = await axios.get(`${process.env.REACT_APP_TOKEN_URL}/token`);
+  let response = await axios.post(`${API_URL}/v1/oauth2/token`, {
+    "client_id": import.meta.env.VITE_CLIENT_ID,
+    "client_secret": import.meta.env.VITE_CLIENT_SECRET
+  });
   return {
     "access_token": response.data.access_token,
     "expires_in": response.data.expires_in,
@@ -11,7 +17,7 @@ const getToken = async () => {
 
 const transcribeVideo = async (videoUrl,) => {
   let { access_token } = await getToken();
-  let response = await axios.post(`${process.env.REACT_APP_API_URL}/v2/transcription`, {
+  let response = await axios.post(`${API_URL}/v2/transcription`, {
     "fileUrl": videoUrl,
     "mediaType": "video",
     "language": "en-US"
@@ -35,7 +41,7 @@ const getTranscriptionResponse = async (jobId) => {
     let intervalId = setInterval(async () => {
       try {
         let { access_token } = await getToken();
-        let response = await axios.get(`${process.env.REACT_APP_API_URL}/v1/jobs/${jobId}`,
+        let response = await axios.get(`${API_URL}/v1/jobs/${jobId}`,
           {
             headers: {
               "Authorization": access_token,

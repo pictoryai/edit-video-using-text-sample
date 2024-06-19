@@ -139,4 +139,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .env
+.env.development
+.env.local
+env_file.txt
 .vscode
