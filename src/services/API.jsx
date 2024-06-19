@@ -45,7 +45,7 @@ const getTranscriptionResponse = async (jobId) => {
           {
             headers: {
               "Authorization": access_token,
-              "X-Pictory-User-Id": "edtechuser"
+              "X-Pictory-User-Id": import.meta.env.VITE_X_PICTORY_USER_ID
             }
           }
         );
