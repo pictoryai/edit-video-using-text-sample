@@ -25,7 +25,7 @@ const transcribeVideo = async (videoUrl,) => {
     {
       headers: {
         "Authorization": access_token,
-        "X-Pictory-User-Id": import.meta.env.VITE_X_PICTORY_USER_ID
+        "X-Pictory-User-Id": "edtechuser"
       }
     }
   );
@@ -45,7 +45,7 @@ const getTranscriptionResponse = async (jobId) => {
           {
             headers: {
               "Authorization": access_token,
-              "X-Pictory-User-Id": import.meta.env.VITE_X_PICTORY_USER_ID
+              "X-Pictory-User-Id": "edtechuser"
             }
           }
         );
